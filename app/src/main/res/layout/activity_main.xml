@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:context="com.example.angluswang.superflashlight.MainActivity">
 
+    <ImageView
+        android:id="@+id/img_flashlight"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/flash_normal"
+        android:clickable="true"
+        android:onClick="openflashlight"/>
 
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
