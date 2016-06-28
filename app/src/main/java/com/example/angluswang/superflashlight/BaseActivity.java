@@ -10,14 +10,17 @@ import android.widget.ImageView;
  */
 
 public class BaseActivity extends Activity {
-
-    private ImageView imgFlashlight;
+    protected ImageView imgFlashlight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initView();
+    }
+
+    private void initView() {
         imgFlashlight = (ImageView) findViewById(R.id.img_flashlight);
     }
 }
