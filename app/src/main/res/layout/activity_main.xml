@@ -7,5 +7,21 @@
     android:background="#c6c3c3">
 
     <include layout="@layout/ui_flashlight"/>
+    <include layout="@layout/ui_main"/>
+    <include layout="@layout/ui_warnning"/>
+    <include layout="@layout/ui_morse"/>
+    <include layout="@layout/ui_bulb"/>
+    <include layout="@layout/ui_colorlight"/>
+    <include layout="@layout/ui_policelight"/>
+    <include layout="@layout/ui_setting"/>
 
+    <ImageView
+        android:id="@+id/img_controller"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="top|right"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/controller"
+        android:onClick="onclick_controller"/>
 </FrameLayout>
