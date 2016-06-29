@@ -110,4 +110,12 @@ public class FlashActivity extends BaseActivity {
 
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        //当前活动失去焦点时，自动关闭闪关灯
+        closeFlash();
+    }
 }
