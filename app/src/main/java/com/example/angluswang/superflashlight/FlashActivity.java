@@ -2,10 +2,15 @@ package com.example.angluswang.superflashlight;
 
 import android.content.pm.PackageManager;
 import android.graphics.Point;
+import android.graphics.SurfaceTexture;
+import android.graphics.drawable.TransitionDrawable;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import java.io.IOException;
 
 /**
  * Created by Jeson on 2016/5/30.
@@ -16,6 +21,8 @@ public class FlashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        imgFlashlight.setTag(false); // 设置闪光灯 默认是关闭状态
 
         setFlashControllerSize();
     }
@@ -33,6 +40,13 @@ public class FlashActivity extends BaseActivity {
             Toast.makeText(FlashActivity.this, "可以使用闪光灯",
                     Toast.LENGTH_SHORT).show();
         }
+
+        // 打开、关闭闪光灯
+        if ((Boolean) imgFlashlight.getTag() == false) {
+            openFlash();
+        } else {
+            closeFlash();
+        }
     }
 
     /**
@@ -46,5 +60,54 @@ public class FlashActivity extends BaseActivity {
         lp.width = point.x / 5;
         lp.height = point.y / 6;
         imgFlashController.setLayoutParams(lp);
+    }
+
+    /**
+     * 打开闪光灯
+     */
+    protected void openFlash() {
+        TransitionDrawable transDraw = (TransitionDrawable) imgFlashlight.getDrawable();
+        transDraw.startTransition(300);     // 播放图片到开启状态
+        imgFlashlight.setTag(true);
+
+        try {
+            mCamera = android.hardware.Camera.open();
+
+            int textureId = 0;
+            mCamera.setPreviewTexture(new SurfaceTexture(textureId));
+            mCamera.startPreview();
+
+            mParameters = mCamera.getParameters();
+            mParameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+
+            mCamera.setParameters(mParameters);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 关闭闪光灯
+     */
+    protected void closeFlash() {
+        TransitionDrawable transDraw = (TransitionDrawable) imgFlashlight.getDrawable();
+        if ((Boolean) imgFlashlight.getTag()) {
+            transDraw.reverseTransition(300);   //回滚图片到关闭状态
+            imgFlashlight.setTag(false);
+            if (mCamera != null) {
+                mParameters = mCamera.getParameters();
+                mParameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+
+                mCamera.setParameters(mParameters);
+
+                //释放资源
+                mCamera.stopPreview();
+                mCamera.release();
+                mCamera = null;
+            }
+
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.angluswang.superflashlight;
 
 import android.app.Activity;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -12,6 +13,9 @@ import android.widget.ImageView;
 public class BaseActivity extends Activity {
     protected ImageView imgFlashlight;
     protected ImageView imgFlashController;
+
+    protected android.hardware.Camera mCamera;
+    protected Camera.Parameters mParameters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
