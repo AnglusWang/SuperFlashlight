@@ -37,6 +37,7 @@ public class FlashLight extends BaseActivity {
                 PackageManager.FEATURE_CAMERA_FLASH)) {
             Toast.makeText(FlashLight.this, "没有闪光灯",
                     Toast.LENGTH_SHORT).show();
+            return;
         } else {
 //            Toast.makeText(FlashLight.this, "可以使用闪光灯",
 //                    Toast.LENGTH_SHORT).show();
