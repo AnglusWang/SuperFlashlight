@@ -22,6 +22,7 @@ public class BaseActivity extends Activity {
     protected ImageView imgWarmingup;
     protected ImageView imgWarmingdown;
     protected EditText etMorseCode;
+    protected ImageView mImageViewBulb;
 
     protected android.hardware.Camera mCamera;
     protected Camera.Parameters mParameters;
@@ -30,7 +31,7 @@ public class BaseActivity extends Activity {
     protected LinearLayout uiMainLayout;
     protected LinearLayout uiWarnning;
     protected LinearLayout uiMorse;
-    protected LinearLayout uiBulb;
+    protected FrameLayout uiBulb;
     protected LinearLayout uiColorLight;
     protected LinearLayout uiPoliceLight;
     protected LinearLayout uiSetting;
@@ -68,13 +69,14 @@ public class BaseActivity extends Activity {
         imgWarmingup = (ImageView) findViewById(R.id.img_warming_on);
         imgWarmingdown = (ImageView) findViewById(R.id.img_warming_off);
         etMorseCode = (EditText) findViewById(R.id.et_morse_code);
+        mImageViewBulb = (ImageView) findViewById(R.id.imageview_bulb);
 
         uiFalshlight = (FrameLayout) findViewById(R.id.framelayout_flash_light);
-        uiMainLayout = (LinearLayout) findViewById(R.id.framelayout_main);
-        uiWarnning = (LinearLayout) findViewById(R.id.framelayout_warnning);
-        uiMorse = (LinearLayout) findViewById(R.id.framelayout_morse);
-//
-//        uiBulb = (FrameLayout) findViewById(R.id.framelayout_bulb);
+        uiMainLayout = (LinearLayout) findViewById(R.id.linear_layout_main);
+        uiWarnning = (LinearLayout) findViewById(R.id.linear_layout_warnning);
+        uiMorse = (LinearLayout) findViewById(R.id.linear_layout_morse);
+        uiBulb = (FrameLayout) findViewById(R.id.framelayout_bulb);
+
 //        uiColorLight = (FrameLayout) findViewById(R.id.framelayout_color_light);
 //        uiPoliceLight = (FrameLayout) findViewById(R.id.framelayout_police_light);
 //        uiSetting = (FrameLayout) findViewById(R.id.framelayout_setting);
@@ -85,8 +87,8 @@ public class BaseActivity extends Activity {
         uiMainLayout.setVisibility(View.GONE);
         uiWarnning.setVisibility(View.GONE);
         uiMorse.setVisibility(View.GONE);
+        uiBulb.setVisibility(View.GONE);
 
-//        uiBulb.setVisibility(View.GONE);
 //        uiColorLight.setVisibility(View.GONE);
 //        uiPoliceLight.setVisibility(View.GONE);
 //        uiSetting.setVisibility(View.GONE);

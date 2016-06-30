@@ -2,7 +2,7 @@ package com.example.angluswang.superflashlight;
 
 import android.view.View;
 
-public class MainActivity extends Morse {
+public class MainActivity extends Bulb {
 
     // 右上角图标点击处理
     public void onclick_controller(View view) {
@@ -30,6 +30,12 @@ public class MainActivity extends Morse {
                     uiMorse.setVisibility(View.VISIBLE);
                     mCurrentType = uiType.UI_TYPE_MORSE;
                     break;
+                case UI_TYPE_BULB:
+                    uiBulb.setVisibility(View.VISIBLE);
+                    screenBrightness(1f);
+                    mHideTextViewBulb.hide();
+                    mCurrentType = uiType.UI_TYPE_BULB;
+
                 default:
                     break;
             }
@@ -62,7 +68,12 @@ public class MainActivity extends Morse {
     }
 
     public void onClick_toBulb(View view) {
-
+        hideAllUi();
+        uiBulb.setVisibility(View.VISIBLE);
+        screenBrightness(1f);
+        mHideTextViewBulb.hide();
+        mCurrentType = uiType.UI_TYPE_BULB;
+        mLastType = mCurrentType;
     }
 
 
