@@ -11,7 +11,8 @@
     <include layout="@layout/ui_main"/>
 
     <include layout="@layout/ui_warning_light"/>
-    <!--<include layout="@layout/ui_morse"/>-->
+
+    <include layout="@layout/ui_morse"/>
     <!--<include layout="@layout/ui_bulb"/>-->
     <!--<include layout="@layout/ui_colorlight"/>-->
     <!--<include layout="@layout/ui_policelight"/>-->

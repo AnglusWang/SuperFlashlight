@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,6 +21,7 @@ public class BaseActivity extends Activity {
     protected ImageView imgFlashController;
     protected ImageView imgWarmingup;
     protected ImageView imgWarmingdown;
+    protected EditText etMorseCode;
 
     protected android.hardware.Camera mCamera;
     protected Camera.Parameters mParameters;
@@ -27,13 +29,11 @@ public class BaseActivity extends Activity {
     protected FrameLayout uiFalshlight;
     protected LinearLayout uiMainLayout;
     protected LinearLayout uiWarnning;
-
-
-    protected FrameLayout uiBulb;
-    protected FrameLayout uiColorLight;
-    protected FrameLayout uiMorse;
-    protected FrameLayout uiPoliceLight;
-    protected FrameLayout uiSetting;
+    protected LinearLayout uiMorse;
+    protected LinearLayout uiBulb;
+    protected LinearLayout uiColorLight;
+    protected LinearLayout uiPoliceLight;
+    protected LinearLayout uiSetting;
 
     protected uiType mCurrentType = uiType.UI_TYPE_FLASH_LIGHT;
     protected uiType mLastType = uiType.UI_TYPE_FLASH_LIGHT;
@@ -47,7 +47,7 @@ public class BaseActivity extends Activity {
         UI_TYPE_WARNING_LIGHT,
         UI_TYPE_BULB,
         UI_TYPE_COLOR,
-        UI_TYPE_POLICE,
+        UI_TYPE_MORSE,
         UI_TYPE_POLICE_LIGHT,
         UI_TYPE_SETTING
     }
@@ -65,31 +65,29 @@ public class BaseActivity extends Activity {
     private void initView() {
         imgFlashController = (ImageView) findViewById(R.id.id_flashlight_controller);
         imgFlashlight = (ImageView) findViewById(R.id.id_flashlight);
+        imgWarmingup = (ImageView) findViewById(R.id.img_warming_on);
+        imgWarmingdown = (ImageView) findViewById(R.id.img_warming_off);
+        etMorseCode = (EditText) findViewById(R.id.et_morse_code);
 
         uiFalshlight = (FrameLayout) findViewById(R.id.framelayout_flash_light);
         uiMainLayout = (LinearLayout) findViewById(R.id.framelayout_main);
-
         uiWarnning = (LinearLayout) findViewById(R.id.framelayout_warnning);
+        uiMorse = (LinearLayout) findViewById(R.id.framelayout_morse);
 //
 //        uiBulb = (FrameLayout) findViewById(R.id.framelayout_bulb);
 //        uiColorLight = (FrameLayout) findViewById(R.id.framelayout_color_light);
-//        uiMorse = (FrameLayout) findViewById(R.id.framelayout_morse);
 //        uiPoliceLight = (FrameLayout) findViewById(R.id.framelayout_police_light);
 //        uiSetting = (FrameLayout) findViewById(R.id.framelayout_setting);
-
-        imgWarmingup = (ImageView) findViewById(R.id.img_warming_on);
-        imgWarmingdown = (ImageView) findViewById(R.id.img_warming_off);
-
     }
 
     protected void hideAllUi() {
         uiFalshlight.setVisibility(View.GONE);
         uiMainLayout.setVisibility(View.GONE);
         uiWarnning.setVisibility(View.GONE);
+        uiMorse.setVisibility(View.GONE);
 
 //        uiBulb.setVisibility(View.GONE);
 //        uiColorLight.setVisibility(View.GONE);
-//        uiMorse.setVisibility(View.GONE);
 //        uiPoliceLight.setVisibility(View.GONE);
 //        uiSetting.setVisibility(View.GONE);
     }

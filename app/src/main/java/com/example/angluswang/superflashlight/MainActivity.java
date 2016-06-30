@@ -2,7 +2,7 @@ package com.example.angluswang.superflashlight;
 
 import android.view.View;
 
-public class MainActivity extends WarningLight {
+public class MainActivity extends Morse {
 
     // 右上角图标点击处理
     public void onclick_controller(View view) {
@@ -26,6 +26,10 @@ public class MainActivity extends WarningLight {
                     uiWarnning.setVisibility(View.VISIBLE);
                     mCurrentType = uiType.UI_TYPE_WARNING_LIGHT;
                     new WarningLightThread().start();
+                case UI_TYPE_MORSE:
+                    uiMorse.setVisibility(View.VISIBLE);
+                    mCurrentType = uiType.UI_TYPE_MORSE;
+                    break;
                 default:
                     break;
             }
@@ -51,7 +55,10 @@ public class MainActivity extends WarningLight {
     }
 
     public void onClick_toMorse(View view) {
-
+        hideAllUi();
+        uiMorse.setVisibility(View.VISIBLE);
+        mCurrentType = uiType.UI_TYPE_MORSE;
+        mLastType = mCurrentType;
     }
 
     public void onClick_toBulb(View view) {
