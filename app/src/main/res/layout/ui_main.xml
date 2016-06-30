@@ -8,93 +8,97 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="100dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/main_flashing"
-            android:onClick="onclick_toflashing"/>
+            android:onClick="onClick_toFlashLight"
+            android:src="@drawable/main_flashlight"/>
 
         <ImageView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/main_warning_light"
-            android:onClick="onclick_warning_light"/>
+            android:onClick="onClick_toWarnnig"
+            android:src="@drawable/main_warning_light"/>
 
         <ImageView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/main_morse"
-            android:onClick="onclick_morse"/>
+            android:onClick="onClick_toMorse"
+            android:src="@drawable/main_morse"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="100dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/main_bulb"
-            android:onClick="onclick_bulb"/>
+            android:onClick="onClick_toBulb"
+            android:src="@drawable/main_bulb"/>
 
         <ImageView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/main_color"
-            android:onClick="onclick_color"/>
+            android:onClick="onClick_toColor"
+            android:src="@drawable/main_color"/>
 
         <ImageView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/main_police_light"
-            android:onClick="onclick_policelight"/>
+            android:onClick="onClick_toPolice"
+            android:src="@drawable/main_police_light"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="100dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"/>
-
-        <ImageView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/main_setting"
-            android:onClick="onclick_setting"/>
+            android:onClick="onClick_toFlashLight"
+            android:src="@drawable/main_flashlight"
+            android:visibility="invisible"/>
 
         <ImageView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:onClick="onClick_toSetting"
+            android:src="@drawable/main_settings"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:onClick="onClick_toMorse"
+            android:src="@drawable/main_morse"
+            android:visibility="invisible"/>
     </LinearLayout>
 </LinearLayout>

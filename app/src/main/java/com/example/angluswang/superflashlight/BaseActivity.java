@@ -23,13 +23,28 @@ public class BaseActivity extends Activity {
     protected FrameLayout uiFalshlight;
     protected LinearLayout uiMainLayout;
 
+
+    protected FrameLayout uiBulb;
+    protected FrameLayout uiColorLight;
+    protected FrameLayout uiMorse;
+    protected FrameLayout uiPoliceLight;
+    protected FrameLayout uiSetting;
+    protected FrameLayout uiWarnning;
+
     protected uiType mCurrentType = uiType.UI_TYPE_FLASHLIGHT;
     protected uiType mLastType = uiType.UI_TYPE_FLASHLIGHT;
 
+
     // 列举有哪些功能项
     protected enum uiType {
-        UI_TYPE_UIMAIN, UI_TYPE_FLASHLIGHT, UI_TYPE_WARNING_LIGHT, UI_TYPE_BULB,
-        UI_TYPE_COLOR, UI_TYPE_POLICE, UI_TYPE_POLICE_LIGHT, UI_TYPE_SETTING
+        UI_TYPE_UIMAIN,
+        UI_TYPE_FLASHLIGHT,
+        UI_TYPE_WARNING_LIGHT,
+        UI_TYPE_BULB,
+        UI_TYPE_COLOR,
+        UI_TYPE_POLICE,
+        UI_TYPE_POLICE_LIGHT,
+        UI_TYPE_SETTING
     }
 
     @Override
@@ -44,12 +59,26 @@ public class BaseActivity extends Activity {
         imgFlashController = (ImageView) findViewById(R.id.id_flashlight_controller);
         imgFlashlight = (ImageView) findViewById(R.id.id_flashlight);
 
-        uiFalshlight = (FrameLayout) findViewById(R.id.id_ui_flashlight);
-        uiMainLayout = (LinearLayout) findViewById(R.id.ui_main_layout);
+        uiFalshlight = (FrameLayout) findViewById(R.id.framelayout_flash_light);
+        uiMainLayout = (LinearLayout) findViewById(R.id.framelayout_main);
+
+        uiBulb = (FrameLayout) findViewById(R.id.framelayout_bulb);
+        uiColorLight = (FrameLayout) findViewById(R.id.framelayout_color_light);
+        uiMorse = (FrameLayout) findViewById(R.id.framelayout_morse);
+        uiPoliceLight = (FrameLayout) findViewById(R.id.framelayout_police_light);
+        uiSetting = (FrameLayout) findViewById(R.id.framelayout_setting);
+        uiWarnning = (FrameLayout) findViewById(R.id.framelayout_warnning);
     }
 
     protected void hideAllUi() {
         uiFalshlight.setVisibility(View.GONE);
         uiMainLayout.setVisibility(View.GONE);
+
+//        uiBulb.setVisibility(View.GONE);
+//        uiColorLight.setVisibility(View.GONE);
+//        uiMorse.setVisibility(View.GONE);
+//        uiPoliceLight.setVisibility(View.GONE);
+//        uiSetting.setVisibility(View.GONE);
+//        uiWarnning.setVisibility(View.GONE);
     }
 }

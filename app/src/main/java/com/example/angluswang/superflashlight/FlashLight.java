@@ -16,7 +16,7 @@ import java.io.IOException;
  * Created by Jeson on 2016/5/30.
  */
 
-public class FlashActivity extends BaseActivity {
+public class FlashLight extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +34,10 @@ public class FlashActivity extends BaseActivity {
         // 检测当前设备是否支持闪光灯
         if (!getPackageManager().hasSystemFeature(
                 PackageManager.FEATURE_CAMERA_FLASH)) {
-            Toast.makeText(FlashActivity.this, "没有闪光灯",
+            Toast.makeText(FlashLight.this, "没有闪光灯",
                     Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(FlashActivity.this, "可以使用闪光灯",
+            Toast.makeText(FlashLight.this, "可以使用闪光灯",
                     Toast.LENGTH_SHORT).show();
         }
 
@@ -57,8 +57,8 @@ public class FlashActivity extends BaseActivity {
         getWindowManager().getDefaultDisplay().getSize(point);  // 获得屏幕的像素
 
         ViewGroup.LayoutParams lp = imgFlashController.getLayoutParams();
-        lp.width = point.x / 5;
-        lp.height = point.y / 6;
+        lp.width = point.x / 3;
+        lp.height = point.y * 3 / 4;
         imgFlashController.setLayoutParams(lp);
     }
 
