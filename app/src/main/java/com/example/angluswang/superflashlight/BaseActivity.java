@@ -3,7 +3,9 @@ package com.example.angluswang.superflashlight;
 import android.app.Activity;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,12 +18,15 @@ import android.widget.LinearLayout;
 public class BaseActivity extends Activity {
     protected ImageView imgFlashlight;
     protected ImageView imgFlashController;
+    protected ImageView imgWarmingup;
+    protected ImageView imgWarmingdown;
 
     protected android.hardware.Camera mCamera;
     protected Camera.Parameters mParameters;
 
     protected FrameLayout uiFalshlight;
     protected LinearLayout uiMainLayout;
+    protected LinearLayout uiWarnning;
 
 
     protected FrameLayout uiBulb;
@@ -29,16 +34,16 @@ public class BaseActivity extends Activity {
     protected FrameLayout uiMorse;
     protected FrameLayout uiPoliceLight;
     protected FrameLayout uiSetting;
-    protected FrameLayout uiWarnning;
 
-    protected uiType mCurrentType = uiType.UI_TYPE_FLASHLIGHT;
-    protected uiType mLastType = uiType.UI_TYPE_FLASHLIGHT;
+    protected uiType mCurrentType = uiType.UI_TYPE_FLASH_LIGHT;
+    protected uiType mLastType = uiType.UI_TYPE_FLASH_LIGHT;
 
+    protected int mDefaultScreenBrightness;
 
     // 列举有哪些功能项
     protected enum uiType {
         UI_TYPE_UIMAIN,
-        UI_TYPE_FLASHLIGHT,
+        UI_TYPE_FLASH_LIGHT,
         UI_TYPE_WARNING_LIGHT,
         UI_TYPE_BULB,
         UI_TYPE_COLOR,
@@ -53,6 +58,8 @@ public class BaseActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         initView();
+
+        mDefaultScreenBrightness = getScreenBrightness();
     }
 
     private void initView() {
@@ -62,23 +69,56 @@ public class BaseActivity extends Activity {
         uiFalshlight = (FrameLayout) findViewById(R.id.framelayout_flash_light);
         uiMainLayout = (LinearLayout) findViewById(R.id.framelayout_main);
 
-        uiBulb = (FrameLayout) findViewById(R.id.framelayout_bulb);
-        uiColorLight = (FrameLayout) findViewById(R.id.framelayout_color_light);
-        uiMorse = (FrameLayout) findViewById(R.id.framelayout_morse);
-        uiPoliceLight = (FrameLayout) findViewById(R.id.framelayout_police_light);
-        uiSetting = (FrameLayout) findViewById(R.id.framelayout_setting);
-        uiWarnning = (FrameLayout) findViewById(R.id.framelayout_warnning);
+        uiWarnning = (LinearLayout) findViewById(R.id.framelayout_warnning);
+//
+//        uiBulb = (FrameLayout) findViewById(R.id.framelayout_bulb);
+//        uiColorLight = (FrameLayout) findViewById(R.id.framelayout_color_light);
+//        uiMorse = (FrameLayout) findViewById(R.id.framelayout_morse);
+//        uiPoliceLight = (FrameLayout) findViewById(R.id.framelayout_police_light);
+//        uiSetting = (FrameLayout) findViewById(R.id.framelayout_setting);
+
+        imgWarmingup = (ImageView) findViewById(R.id.img_warming_on);
+        imgWarmingdown = (ImageView) findViewById(R.id.img_warming_off);
+
     }
 
     protected void hideAllUi() {
         uiFalshlight.setVisibility(View.GONE);
         uiMainLayout.setVisibility(View.GONE);
+        uiWarnning.setVisibility(View.GONE);
 
 //        uiBulb.setVisibility(View.GONE);
 //        uiColorLight.setVisibility(View.GONE);
 //        uiMorse.setVisibility(View.GONE);
 //        uiPoliceLight.setVisibility(View.GONE);
 //        uiSetting.setVisibility(View.GONE);
-//        uiWarnning.setVisibility(View.GONE);
+    }
+
+    /**
+     * 改变屏幕的亮度
+     */
+    public void screenBrightness(float value) {
+        try {
+            WindowManager.LayoutParams layout = getWindow().getAttributes();
+            layout.screenBrightness = value;
+            getWindow().setAttributes(layout);
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    /**
+     * 获得当前屏幕的亮度，获取的值为0~255的一个数值
+     */
+    public int getScreenBrightness() {
+        int value = 0;
+        try {
+            value = Settings.System.getInt(getContentResolver(),
+                    Settings.System.SCREEN_BRIGHTNESS);
+        } catch (Exception e) {
+
+        }
+        return value;
     }
 }

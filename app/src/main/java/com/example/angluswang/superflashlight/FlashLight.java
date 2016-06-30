@@ -14,6 +14,7 @@ import java.io.IOException;
 
 /**
  * Created by Jeson on 2016/5/30.
+ * 闪光灯界面
  */
 
 public class FlashLight extends BaseActivity {
@@ -37,8 +38,8 @@ public class FlashLight extends BaseActivity {
             Toast.makeText(FlashLight.this, "没有闪光灯",
                     Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(FlashLight.this, "可以使用闪光灯",
-                    Toast.LENGTH_SHORT).show();
+//            Toast.makeText(FlashLight.this, "可以使用闪光灯",
+//                    Toast.LENGTH_SHORT).show();
         }
 
         // 打开、关闭闪光灯
