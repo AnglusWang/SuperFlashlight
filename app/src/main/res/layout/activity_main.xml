@@ -19,7 +19,8 @@
     <include layout="@layout/ui_colorlight"/>
 
     <include layout="@layout/ui_policelight"/>
-    <!--<include layout="@layout/ui_setting"/>-->
+
+    <include layout="@layout/ui_setting"/>
 
     <ImageView
         android:id="@+id/img_controller"

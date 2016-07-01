@@ -7,10 +7,12 @@ import android.provider.Settings;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 /**
@@ -19,6 +21,13 @@ import android.widget.Toast;
  */
 
 public class BaseActivity extends Activity {
+
+    // 列举有哪些功能项
+    protected enum uiType {
+        UI_TYPE_UIMAIN, UI_TYPE_FLASH_LIGHT, UI_TYPE_WARNING_LIGHT, UI_TYPE_BULB,
+        UI_TYPE_COLOR, UI_TYPE_MORSE, UI_TYPE_POLICE_LIGHT, UI_TYPE_SETTING
+    }
+
     protected ImageView imgFlashlight;
     protected ImageView imgFlashController;
     protected ImageView imgWarmingup;
@@ -28,6 +37,11 @@ public class BaseActivity extends Activity {
     protected HideTextView mHideTextViewBulb;
     protected HideTextView mHideTextViewColor;
     protected HideTextView mHideTextViewPoliceLight;
+
+    protected SeekBar skWarningLight;
+    protected SeekBar skPoliceLight;
+    protected Button btnAddShortcut;
+    protected Button btnRemoveShortcut;
 
     protected android.hardware.Camera mCamera;
     protected Camera.Parameters mParameters;
@@ -48,17 +62,8 @@ public class BaseActivity extends Activity {
 
     protected int mFinishCount = 0; // 实现按返回键计数
 
-    // 列举有哪些功能项
-    protected enum uiType {
-        UI_TYPE_UIMAIN,
-        UI_TYPE_FLASH_LIGHT,
-        UI_TYPE_WARNING_LIGHT,
-        UI_TYPE_BULB,
-        UI_TYPE_COLOR,
-        UI_TYPE_MORSE,
-        UI_TYPE_POLICE_LIGHT,
-        UI_TYPE_SETTING
-    }
+    protected int mCurrentWarningLightInterval = 500;   //警告灯的闪烁间隔
+    protected int mCurrentPoliceLightInterval = 500;    //警灯的闪烁间隔
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +73,9 @@ public class BaseActivity extends Activity {
         initView();
 
         mDefaultScreenBrightness = getScreenBrightness();
+
+        skWarningLight.setProgress(mCurrentWarningLightInterval - 50);
+        skPoliceLight.setProgress(mCurrentPoliceLightInterval - 100);
     }
 
     private void initView() {
@@ -81,6 +89,12 @@ public class BaseActivity extends Activity {
         mHideTextViewColor = (HideTextView) findViewById(R.id.tv_hide_color);
         mHideTextViewPoliceLight = (HideTextView) findViewById(R.id.tv_hide_police_light);
 
+        // 设置界面的控件初始化
+        skWarningLight = (SeekBar) findViewById(R.id.seekbar_warning_light);
+        skPoliceLight = (SeekBar) findViewById(R.id.seekbar_police_light);
+        btnAddShortcut = (Button) findViewById(R.id.button_add_shortcut);
+        btnRemoveShortcut = (Button) findViewById(R.id.button_remove_shortcut);
+
         uiFalshlight = (FrameLayout) findViewById(R.id.framelayout_flash_light);
         uiMainLayout = (LinearLayout) findViewById(R.id.linear_layout_main);
         uiWarnning = (LinearLayout) findViewById(R.id.linear_layout_warnning);
@@ -88,8 +102,8 @@ public class BaseActivity extends Activity {
         uiBulb = (FrameLayout) findViewById(R.id.framelayout_bulb);
         uiColorLight = (FrameLayout) findViewById(R.id.framelayout_color_light);
         uiPoliceLight = (FrameLayout) findViewById(R.id.framelayout_police_light);
+        uiSetting = (LinearLayout) findViewById(R.id.linear_layout_setting);
 
-//        uiSetting = (FrameLayout) findViewById(R.id.framelayout_setting);
     }
 
     protected void hideAllUi() {
@@ -100,8 +114,7 @@ public class BaseActivity extends Activity {
         uiBulb.setVisibility(View.GONE);
         uiColorLight.setVisibility(View.GONE);
         uiPoliceLight.setVisibility(View.GONE);
-
-//        uiSetting.setVisibility(View.GONE);
+        uiSetting.setVisibility(View.GONE);
     }
 
     /**
@@ -139,11 +152,11 @@ public class BaseActivity extends Activity {
     }
 
     /**
-     *  重写该方法，实现两次按返回键退出功能
+     * 重写该方法，实现两次按返回键退出功能
      */
     @Override
     public void finish() {
-        mFinishCount ++;
+        mFinishCount++;
         if (mFinishCount == 1) {
             Toast.makeText(this, "再按一次退出!",
                     Toast.LENGTH_SHORT).show();

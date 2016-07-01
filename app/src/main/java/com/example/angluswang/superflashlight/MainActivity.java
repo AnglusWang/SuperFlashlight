@@ -3,7 +3,7 @@ package com.example.angluswang.superflashlight;
 import android.graphics.Color;
 import android.view.View;
 
-public class MainActivity extends PoliceLight {
+public class MainActivity extends Settings {
 
     // 右上角图标点击处理
     public void onclick_controller(View view) {
@@ -59,6 +59,10 @@ public class MainActivity extends PoliceLight {
                     screenBrightness(1f);
                     mCurrentType = uiType.UI_TYPE_POLICE_LIGHT;
                     new PoliceThread().start();
+                    break;
+                case UI_TYPE_SETTING:
+                    uiSetting.setVisibility(View.VISIBLE);
+                    mCurrentType = uiType.UI_TYPE_SETTING;
                     break;
                 default:
                     break;
@@ -126,6 +130,9 @@ public class MainActivity extends PoliceLight {
     }
 
     public void onClick_toSetting(View view) {
-
+        hideAllUi();
+        uiSetting.setVisibility(View.VISIBLE);
+        mCurrentType = uiType.UI_TYPE_SETTING;
+        mLastType = mCurrentType;
     }
 }

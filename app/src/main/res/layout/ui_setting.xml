@@ -1,8 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:id="@+id/framelayout_setting"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:visibility="gone">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/linear_layout_setting"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginTop="80dp"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:visibility="gone">
 
-</FrameLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="警示灯闪烁频率"
+        android:textColor="#FFF"
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="快"
+            android:textColor="#FFF"
+            android:textSize="18sp"/>
+
+        <SeekBar
+            android:id="@+id/seekbar_warning_light"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="2000"
+            android:progress="400"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="慢"
+            android:textColor="#FFF"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="警灯闪烁频率"
+        android:textColor="#FFF"
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="快"
+            android:textColor="#FFF"
+            android:textSize="18sp"/>
+
+        <SeekBar
+            android:id="@+id/seekbar_police_light"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="2000"
+            android:progress="400"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="慢"
+            android:textColor="#FFF"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_add_shortcut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:onClick="onClick_AddShortcut"
+        android:text="添加快捷方式"
+        android:textColor="#FFF"/>
+
+    <Button
+        android:id="@+id/button_remove_shortcut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:onClick="onClick_RemoveShortcut"
+        android:text="移除快捷方式"
+        android:textColor="#FFF"/>
+</LinearLayout>
