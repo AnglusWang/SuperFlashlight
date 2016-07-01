@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 /**
  * Created by Jeson on 2016/5/30.
@@ -43,6 +45,8 @@ public class BaseActivity extends Activity {
     protected uiType mLastType = uiType.UI_TYPE_FLASH_LIGHT;
 
     protected int mDefaultScreenBrightness;
+
+    protected int mFinishCount = 0; // 实现按返回键计数
 
     // 列举有哪些功能项
     protected enum uiType {
@@ -126,5 +130,25 @@ public class BaseActivity extends Activity {
 
         }
         return value;
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        mFinishCount = 0;
+        return super.dispatchTouchEvent(ev);
+    }
+
+    /**
+     *  重写该方法，实现两次按返回键退出功能
+     */
+    @Override
+    public void finish() {
+        mFinishCount ++;
+        if (mFinishCount == 1) {
+            Toast.makeText(this, "再按一次退出!",
+                    Toast.LENGTH_SHORT).show();
+        } else if (mFinishCount == 2) {
+            super.finish();
+        }
     }
 }
