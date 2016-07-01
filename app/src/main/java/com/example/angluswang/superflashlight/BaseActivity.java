@@ -24,6 +24,7 @@ public class BaseActivity extends Activity {
     protected EditText etMorseCode;
     protected ImageView imgViewBulb;
     protected HideTextView mHideTextViewBulb;
+    protected HideTextView mHideTextViewColor;
 
     protected android.hardware.Camera mCamera;
     protected Camera.Parameters mParameters;
@@ -33,7 +34,7 @@ public class BaseActivity extends Activity {
     protected LinearLayout uiWarnning;
     protected LinearLayout uiMorse;
     protected FrameLayout uiBulb;
-    protected LinearLayout uiColorLight;
+    protected FrameLayout uiColorLight;
     protected LinearLayout uiPoliceLight;
     protected LinearLayout uiSetting;
 
@@ -72,14 +73,15 @@ public class BaseActivity extends Activity {
         etMorseCode = (EditText) findViewById(R.id.et_morse_code);
         imgViewBulb = (ImageView) findViewById(R.id.iv_bulb);
         mHideTextViewBulb = (HideTextView) findViewById(R.id.tv_hide_bulb);
+        mHideTextViewColor = (HideTextView) findViewById(R.id.tv_hide_color);
 
         uiFalshlight = (FrameLayout) findViewById(R.id.framelayout_flash_light);
         uiMainLayout = (LinearLayout) findViewById(R.id.linear_layout_main);
         uiWarnning = (LinearLayout) findViewById(R.id.linear_layout_warnning);
         uiMorse = (LinearLayout) findViewById(R.id.linear_layout_morse);
         uiBulb = (FrameLayout) findViewById(R.id.framelayout_bulb);
+        uiColorLight = (FrameLayout) findViewById(R.id.framelayout_color_light);
 
-//        uiColorLight = (FrameLayout) findViewById(R.id.framelayout_color_light);
 //        uiPoliceLight = (FrameLayout) findViewById(R.id.framelayout_police_light);
 //        uiSetting = (FrameLayout) findViewById(R.id.framelayout_setting);
     }
@@ -90,8 +92,8 @@ public class BaseActivity extends Activity {
         uiWarnning.setVisibility(View.GONE);
         uiMorse.setVisibility(View.GONE);
         uiBulb.setVisibility(View.GONE);
+        uiColorLight.setVisibility(View.GONE);
 
-//        uiColorLight.setVisibility(View.GONE);
 //        uiPoliceLight.setVisibility(View.GONE);
 //        uiSetting.setVisibility(View.GONE);
     }

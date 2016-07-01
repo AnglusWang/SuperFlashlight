@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -14,6 +13,7 @@ import android.widget.TextView;
 
 public class HideTextView extends TextView {
 
+
     public HideTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -21,11 +21,12 @@ public class HideTextView extends TextView {
     protected Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
+            super.handleMessage(msg);
 
             if (msg.what == 0) {
-                setVisibility(View.GONE);
+                setVisibility(GONE);
             } else if (msg.what == 1) {
-                setVisibility(View.VISIBLE);
+                setVisibility(VISIBLE);
             }
         }
     };

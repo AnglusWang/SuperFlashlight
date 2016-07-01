@@ -1,8 +1,9 @@
 package com.example.angluswang.superflashlight;
 
+import android.graphics.Color;
 import android.view.View;
 
-public class MainActivity extends Bulb {
+public class MainActivity extends ColorLight {
 
     // 右上角图标点击处理
     public void onclick_controller(View view) {
@@ -39,6 +40,10 @@ public class MainActivity extends Bulb {
                     mHideTextViewBulb.hide();
                     mCurrentType = uiType.UI_TYPE_BULB;
 
+                case UI_TYPE_COLOR:
+                    uiColorLight.setVisibility(View.VISIBLE);
+                    screenBrightness(1f);
+                    mCurrentType = uiType.UI_TYPE_COLOR;
                 default:
                     break;
             }
@@ -81,7 +86,15 @@ public class MainActivity extends Bulb {
 
 
     public void onClick_toColor(View view) {
-
+        hideAllUi();
+        uiColorLight.setVisibility(View.VISIBLE);
+        screenBrightness(1f);
+        mHideTextViewColor.setTextColor(Color.rgb(
+                255 - Color.red(mCurrentColorlight),
+                255 - Color.green(mCurrentColorlight),
+                255 - Color.blue(mCurrentColorlight)));
+        mCurrentType = uiType.UI_TYPE_COLOR;
+        mLastType = mCurrentType;
     }
 
     public void onClick_toPolice(View view) {

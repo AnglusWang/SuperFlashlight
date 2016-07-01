@@ -3,6 +3,15 @@
              android:id="@+id/framelayout_color_light"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
+             android:background="#f00"
+             android:onClick="onClick_ShowColorPicker"
              android:visibility="gone">
 
+    <com.example.angluswang.superflashlight.HideTextView
+        android:id="@+id/tv_hide_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="彩色灯：点击屏幕进入颜色选择器"
+        android:textSize="18sp"/>
 </FrameLayout>
