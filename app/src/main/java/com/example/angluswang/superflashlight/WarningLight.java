@@ -25,7 +25,7 @@ public class WarningLight extends FlashLight {
             mWarningLightFlicker = true;
             while (mWarningLightFlicker) {
                 try {
-                    Thread.sleep(300);
+                    Thread.sleep(mCurrentWarningLightInterval);
                     mWarningHandler.sendEmptyMessage(0);
                 } catch (Exception e) {
 

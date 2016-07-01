@@ -23,6 +23,10 @@ public class MainActivity extends Settings {
 
             mPoliceState = false;
 
+            //保存数据
+            mSharedPreferences.edit().putInt("warning_light_interval", mCurrentWarningLightInterval)
+                    .putInt("police_light_interval", mCurrentPoliceLightInterval).commit();
+
         } else {
             switch (mLastType) {
                 case UI_TYPE_FLASH_LIGHT:

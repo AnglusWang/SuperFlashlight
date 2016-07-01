@@ -1,6 +1,8 @@
 package com.example.angluswang.superflashlight;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -65,6 +67,8 @@ public class BaseActivity extends Activity {
     protected int mCurrentWarningLightInterval = 500;   //警告灯的闪烁间隔
     protected int mCurrentPoliceLightInterval = 500;    //警灯的闪烁间隔
 
+    protected SharedPreferences mSharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +80,10 @@ public class BaseActivity extends Activity {
 
         skWarningLight.setProgress(mCurrentWarningLightInterval - 50);
         skPoliceLight.setProgress(mCurrentPoliceLightInterval - 100);
+
+        mSharedPreferences = getSharedPreferences("config", Context.MODE_PRIVATE);
+        mCurrentWarningLightInterval = mSharedPreferences.getInt("warning_light_interval", 200);
+        mCurrentPoliceLightInterval = mSharedPreferences.getInt("police_light_interval", 100);
     }
 
     private void initView() {

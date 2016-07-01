@@ -35,13 +35,13 @@ public class PoliceLight extends ColorLight {
             mPoliceState = true;
             while (mPoliceState) {
                 mHandler.sendEmptyMessage(Color.BLUE);
-                sleepExt(100);
+                sleepExt(mCurrentPoliceLightInterval);
                 mHandler.sendEmptyMessage(Color.BLACK);
-                sleepExt(100);
+                sleepExt(mCurrentPoliceLightInterval);
                 mHandler.sendEmptyMessage(Color.RED);
-                sleepExt(100);
+                sleepExt(mCurrentPoliceLightInterval);
                 mHandler.sendEmptyMessage(Color.BLACK);
-                sleepExt(100);
+                sleepExt(mCurrentPoliceLightInterval);
             }
         }
     }
