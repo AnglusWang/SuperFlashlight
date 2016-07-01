@@ -60,7 +60,7 @@ public class Settings extends PoliceLight
 
         Intent flashlightIntent = new Intent();
         flashlightIntent.setClassName("com.example.angluswang.superflashlight",
-                "com.example.angluswang.superflashlight.FlashLight");
+                "com.example.angluswang.superflashlight.MainActivity");
         flashlightIntent.setAction(Intent.ACTION_MAIN);
         flashlightIntent.addCategory(Intent.CATEGORY_DEFAULT);
 
@@ -74,6 +74,16 @@ public class Settings extends PoliceLight
      * 从桌面移除快捷方式
      */
     public void onClick_RemoveShortcut(View view) {
+        Intent removeShortcut = new Intent("com.android.launcher.action.UNINSTALL_SHORTCUT");
+        removeShortcut.putExtra(Intent.EXTRA_SHORTCUT_NAME, "多功能手电筒");
 
+        Intent flashlightIntent = new Intent();
+        flashlightIntent.setClassName("com.example.angluswang.superflashlight",
+                "com.example.angluswang.superflashlight.MainActivity");
+        flashlightIntent.setAction(Intent.ACTION_MAIN);
+        flashlightIntent.addCategory(Intent.CATEGORY_DEFAULT);
+
+        removeShortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, flashlightIntent);
+        sendBroadcast(removeShortcut);
     }
 }
