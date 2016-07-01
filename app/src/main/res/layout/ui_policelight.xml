@@ -5,4 +5,12 @@
              android:layout_height="match_parent"
              android:visibility="gone">
 
+    <com.example.angluswang.superflashlight.HideTextView
+        android:id="@+id/tv_hide_police_light"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="警灯"
+        android:textColor="#c6c3c3"
+        android:textSize="20sp"/>
 </FrameLayout>

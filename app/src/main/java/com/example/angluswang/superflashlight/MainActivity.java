@@ -3,7 +3,7 @@ package com.example.angluswang.superflashlight;
 import android.graphics.Color;
 import android.view.View;
 
-public class MainActivity extends ColorLight {
+public class MainActivity extends PoliceLight {
 
     // 右上角图标点击处理
     public void onclick_controller(View view) {
@@ -15,6 +15,13 @@ public class MainActivity extends ColorLight {
             //停止警告灯
             mWarningLightFlicker = false;
             screenBrightness(mDefaultScreenBrightness / 255f); // 恢复屏幕亮度
+
+            if (mBulbCrossFadeFlag) {
+                mDrawable.reverseTransition(0);
+            }
+            mBulbCrossFadeFlag = false;
+
+            mPoliceState = false;
 
         } else {
             switch (mLastType) {
@@ -37,13 +44,19 @@ public class MainActivity extends ColorLight {
                 case UI_TYPE_BULB:
                     uiBulb.setVisibility(View.VISIBLE);
                     screenBrightness(1f);
-                    mHideTextViewBulb.hide();
                     mCurrentType = uiType.UI_TYPE_BULB;
 
                 case UI_TYPE_COLOR:
                     uiColorLight.setVisibility(View.VISIBLE);
                     screenBrightness(1f);
                     mCurrentType = uiType.UI_TYPE_COLOR;
+
+                case UI_TYPE_POLICE_LIGHT:
+                    uiPoliceLight.setVisibility(View.VISIBLE);
+                    screenBrightness(1f);
+                    mCurrentType = uiType.UI_TYPE_POLICE_LIGHT;
+                    new PoliceThread().start();
+                    break;
                 default:
                     break;
             }
@@ -93,12 +106,20 @@ public class MainActivity extends ColorLight {
                 255 - Color.red(mCurrentColorlight),
                 255 - Color.green(mCurrentColorlight),
                 255 - Color.blue(mCurrentColorlight)));
+        mHideTextViewColor.hide();
         mCurrentType = uiType.UI_TYPE_COLOR;
         mLastType = mCurrentType;
     }
 
     public void onClick_toPolice(View view) {
+        hideAllUi();
+        uiPoliceLight.setVisibility(View.VISIBLE);
+        screenBrightness(1f);
+        mCurrentType = uiType.UI_TYPE_POLICE_LIGHT;
+        mLastType = mCurrentType;
 
+        mHideTextViewPoliceLight.hide();
+        new PoliceThread().start();
     }
 
     public void onClick_toSetting(View view) {

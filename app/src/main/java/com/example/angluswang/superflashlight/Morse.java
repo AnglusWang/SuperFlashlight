@@ -72,7 +72,7 @@ public class Morse extends WarningLight {
     }
 
     // 线程睡眠
-    private void sleep(long t) {
+    protected void sleepExt(long t) {
         try {
             Thread.sleep(t);
         } catch (InterruptedException e) {
@@ -97,7 +97,7 @@ public class Morse extends WarningLight {
      */
     private void sendDot() {
         openFlash();
-        sleep(DOT_TIME);
+        sleepExt(DOT_TIME);
         closeFlash();
     }
 
@@ -106,7 +106,7 @@ public class Morse extends WarningLight {
      */
     private void sendLine() {
         openFlash();
-        sleep(LINE_TIME);
+        sleepExt(LINE_TIME);
         closeFlash();
     }
 
@@ -127,7 +127,7 @@ public class Morse extends WarningLight {
 
                 if (i > 0 && i < n - 1) {
                     if (lastChar == '.' && dotLine == '-') {
-                        sleep(DOT_LINE_TIME);
+                        sleepExt(DOT_LINE_TIME);
                     }
                 }
                 lastChar = dotLine;
@@ -143,7 +143,7 @@ public class Morse extends WarningLight {
             char c = s.charAt(i);
             sendChat(c);
             if (i < s.length() - 1) {
-                sleep(CHAR_CHAR_TIME);
+                sleepExt(CHAR_CHAR_TIME);
             }
         }
     }
@@ -156,7 +156,7 @@ public class Morse extends WarningLight {
         for (int i = 0, n = words.length; i < n; i++) {
             sendWord(words[i]);
             if (i < words.length - 1) {
-                sleep(WORD_WORD_TIME);
+                sleepExt(WORD_WORD_TIME);
             }
         }
         Toast.makeText(Morse.this, "摩尔斯电码发送完毕~",
