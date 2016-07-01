@@ -35,6 +35,7 @@ public class MainActivity extends PoliceLight {
                     uiWarnning.setVisibility(View.VISIBLE);
                     mCurrentType = uiType.UI_TYPE_WARNING_LIGHT;
                     new WarningLightThread().start();
+                    break;
 
                 case UI_TYPE_MORSE:
                     uiMorse.setVisibility(View.VISIBLE);
@@ -45,11 +46,13 @@ public class MainActivity extends PoliceLight {
                     uiBulb.setVisibility(View.VISIBLE);
                     screenBrightness(1f);
                     mCurrentType = uiType.UI_TYPE_BULB;
+                    break;
 
                 case UI_TYPE_COLOR:
                     uiColorLight.setVisibility(View.VISIBLE);
                     screenBrightness(1f);
                     mCurrentType = uiType.UI_TYPE_COLOR;
+                    break;
 
                 case UI_TYPE_POLICE_LIGHT:
                     uiPoliceLight.setVisibility(View.VISIBLE);
