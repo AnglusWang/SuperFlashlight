@@ -22,7 +22,8 @@ public class BaseActivity extends Activity {
     protected ImageView imgWarmingup;
     protected ImageView imgWarmingdown;
     protected EditText etMorseCode;
-    protected ImageView mImageViewBulb;
+    protected ImageView imgViewBulb;
+    protected HideTextView mHideTextViewBulb;
 
     protected android.hardware.Camera mCamera;
     protected Camera.Parameters mParameters;
@@ -69,7 +70,8 @@ public class BaseActivity extends Activity {
         imgWarmingup = (ImageView) findViewById(R.id.img_warming_on);
         imgWarmingdown = (ImageView) findViewById(R.id.img_warming_off);
         etMorseCode = (EditText) findViewById(R.id.et_morse_code);
-        mImageViewBulb = (ImageView) findViewById(R.id.imageview_bulb);
+        imgViewBulb = (ImageView) findViewById(R.id.iv_bulb);
+        mHideTextViewBulb = (HideTextView) findViewById(R.id.tv_hide_bulb);
 
         uiFalshlight = (FrameLayout) findViewById(R.id.framelayout_flash_light);
         uiMainLayout = (LinearLayout) findViewById(R.id.linear_layout_main);

@@ -21,15 +21,18 @@ public class MainActivity extends Bulb {
                     uiFalshlight.setVisibility(View.VISIBLE);
                     mCurrentType = uiType.UI_TYPE_FLASH_LIGHT;
                     break;
+
                 case UI_TYPE_WARNING_LIGHT:
                     screenBrightness(1f);
                     uiWarnning.setVisibility(View.VISIBLE);
                     mCurrentType = uiType.UI_TYPE_WARNING_LIGHT;
                     new WarningLightThread().start();
+
                 case UI_TYPE_MORSE:
                     uiMorse.setVisibility(View.VISIBLE);
                     mCurrentType = uiType.UI_TYPE_MORSE;
                     break;
+
                 case UI_TYPE_BULB:
                     uiBulb.setVisibility(View.VISIBLE);
                     screenBrightness(1f);

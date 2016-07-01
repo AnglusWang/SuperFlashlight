@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Framelayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:id="@+id/framelayout_bulb"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              android:visibility="gone">
 
     <ImageView
-        android:id="@+id/imageview_bulb"
+        android:id="@+id/iv_bulb"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:onClick="onClick_BulbCrossFade"
         android:src="@drawable/bulb_cross_fade"/>
 
-    <com.example.angluswang.superflashlight.view.HideTextView
-        android:id="@+id/textview_hide_bulb"
+    <com.example.angluswang.superflashlight.HideTextView
+        android:id="@+id/tv_hide_bulb"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="点击电灯泡变亮"
         android:textSize="20sp"/>
 
-</Framelayout>
+</FrameLayout>
