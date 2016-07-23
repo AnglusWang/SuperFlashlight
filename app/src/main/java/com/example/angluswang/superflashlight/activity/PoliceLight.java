@@ -1,4 +1,4 @@
-package com.example.angluswang.superflashlight;
+package com.example.angluswang.superflashlight.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;

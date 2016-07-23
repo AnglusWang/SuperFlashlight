@@ -12,7 +12,7 @@
         android:onClick="onClick_BulbCrossFade"
         android:src="@drawable/bulb_cross_fade"/>
 
-    <com.example.angluswang.superflashlight.HideTextView
+    <com.example.angluswang.superflashlight.view.HideTextView
         android:id="@+id/tv_hide_bulb"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

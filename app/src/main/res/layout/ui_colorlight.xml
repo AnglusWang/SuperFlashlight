@@ -7,7 +7,7 @@
              android:onClick="onClick_ShowColorPicker"
              android:visibility="gone">
 
-    <com.example.angluswang.superflashlight.HideTextView
+    <com.example.angluswang.superflashlight.view.HideTextView
         android:id="@+id/tv_hide_color"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

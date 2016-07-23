@@ -5,7 +5,7 @@
              android:layout_height="match_parent"
              android:visibility="gone">
 
-    <com.example.angluswang.superflashlight.HideTextView
+    <com.example.angluswang.superflashlight.view.HideTextView
         android:id="@+id/tv_hide_police_light"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

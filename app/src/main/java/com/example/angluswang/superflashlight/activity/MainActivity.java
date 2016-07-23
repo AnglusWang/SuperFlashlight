@@ -1,7 +1,9 @@
-package com.example.angluswang.superflashlight;
+package com.example.angluswang.superflashlight.activity;
 
 import android.graphics.Color;
 import android.view.View;
+
+import com.example.angluswang.superflashlight.activity.Settings;
 
 public class MainActivity extends Settings {
 

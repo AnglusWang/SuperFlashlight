@@ -1,8 +1,10 @@
-package com.example.angluswang.superflashlight;
+package com.example.angluswang.superflashlight.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+
+import com.example.angluswang.superflashlight.R;
 
 /**
  * Created by Jeson on 2016/6/30.

@@ -1,4 +1,4 @@
-package com.example.angluswang.superflashlight;
+package com.example.angluswang.superflashlight.activity;
 
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;

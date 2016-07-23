@@ -1,4 +1,4 @@
-package com.example.angluswang.superflashlight;
+package com.example.angluswang.superflashlight.view;
 
 import android.app.Dialog;
 import android.content.Context;

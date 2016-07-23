@@ -1,4 +1,4 @@
-package com.example.angluswang.superflashlight;
+package com.example.angluswang.superflashlight.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,6 +16,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Toast;
+
+import com.example.angluswang.superflashlight.view.HideTextView;
+import com.example.angluswang.superflashlight.R;
 
 /**
  * Created by Jeson on 2016/5/30.

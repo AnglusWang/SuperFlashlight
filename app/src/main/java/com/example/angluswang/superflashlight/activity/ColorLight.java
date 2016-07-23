@@ -1,9 +1,11 @@
-package com.example.angluswang.superflashlight;
+package com.example.angluswang.superflashlight.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.angluswang.superflashlight.view.ColorPickerDialog;
 
 /**
  * Created by Jeson on 2016/7/1.
